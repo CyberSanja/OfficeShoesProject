@@ -77,6 +77,16 @@ def test_add_item_to_favorites():
     close_chrome(driver)
 
 
+def test_instagram_page():
+
+    driver = load_office_shoes("https://www.officeshoes.rs/")
+    sleep(1)
+    driver.find_element(By.CSS_SELECTOR, "a[href='https://www.instagram.com/officeshoes_srbija'").click()
+    sleep(10)
+
+    assert driver.current_url == "https://www.instagram.com/officeshoes_srbija/"
+    close_chrome(driver)
+
 
 def close_chrome(driver):
 
