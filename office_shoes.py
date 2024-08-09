@@ -57,6 +57,26 @@ def test_display_item_info():
     close_chrome(driver)
 
 
+def test_add_item_to_favorites():
+
+    driver = load_office_shoes("https://www.officeshoes.rs/")
+    sleep(1)
+    driver.find_element(By.NAME, "q").send_keys("vans")
+    sleep(1)
+    driver.find_element(By.NAME, "q").send_keys(Keys.ENTER)
+    sleep(1)
+    driver.find_element(By.CSS_SELECTOR, "img[alt='Vans Majica Tagged SS']").click()
+    sleep(1)
+    driver.find_element(By.XPATH, "//span[contains(., 'Dodaj u favorite')]").click()
+    sleep(3)
+    driver.find_element(By.CSS_SELECTOR, "a[title='Favoriti']").click()
+    sleep(2)
+
+    assert driver.current_url == "https://www.officeshoes.rs/products/wishlist"
+
+    close_chrome(driver)
+
+
 
 def close_chrome(driver):
 
