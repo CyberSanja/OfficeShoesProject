@@ -40,6 +40,24 @@ def test_search_input():
     close_chrome(driver)
 
 
+def test_display_item_info():
+
+    driver = load_office_shoes("https://www.officeshoes.rs/")
+    sleep(1)
+    driver.find_element(By.NAME, "q").send_keys("vans")
+    sleep(1)
+    driver.find_element(By.NAME, "q").send_keys(Keys.ENTER)
+    sleep(1)
+    driver.find_element(By.CSS_SELECTOR, "img[alt='Vans Majica Tagged SS']").click()
+    sleep(1)
+
+    assert driver.current_url == "https://www.officeshoes.rs/accessory-vans-majica-tagged-ss/84460"
+    sleep(2)
+
+    close_chrome(driver)
+
+
+
 def close_chrome(driver):
 
     driver.minimize_window()
