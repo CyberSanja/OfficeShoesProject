@@ -13,6 +13,18 @@ def load_office_shoes(url):
     return driver
 
 
+def test_closing_promo_code_header_message():
+
+    driver = load_office_shoes("https://www.officeshoes.rs/")
+    sleep(1)
+    driver.find_element(By.CLASS_NAME, "promo_code_header_message_close").click()
+    sleep(2)
+
+    assert driver.save_screenshot("promo_code_header_closed.png")
+
+    close_chrome(driver)
+
+
 def test_search_input():
 
     driver = load_office_shoes("https://www.officeshoes.rs/")
